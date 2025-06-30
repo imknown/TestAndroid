@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
+    <application
+        android:name=".MyLifecycleApplication"
+        android:enableOnBackInvokedCallback="true"
+        android:icon="@android:drawable/sym_def_app_icon"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:targetApi="tiramisu">
+        <activity
+            android:name=".T00HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".T01LifecycleActivity"
+            android:configChanges="orientation|screenSize|screenLayout"
+            android:theme="@style/Transparent" />
+        <activity android:name=".T02EmojiActivity" />
+        <activity android:name=".T03CallBlockApiActivity" />
+        <activity android:name=".T04PrecomputedTextActivity" />
+        <activity
+            android:name=".T05WindowInsetsActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".T06TextViewLineHeightActivity" />
+        <activity android:name=".T07NetworkCallbackActivity" />
+        <activity android:name=".T08PackageBroadcastActivity" />
+        <activity android:name=".T09SamsungLeadingMarginSpanBugActivity" />
+        <activity android:name=".T10BiometricsActivity" />
+        <activity android:name=".T11NetworkProxyActivity" />
+        <activity android:name=".T12DropDownActivity" />
+        <activity android:name=".T13FunctionalProgrammingActivity" />
+        <activity android:name=".T14WebViewActivity" />
+        <activity android:name=".T15FileActivity" />
+        <activity android:name=".T16KotlinKeywordContext" />
+        <activity android:name=".T17FontActivity" />
+        <activity android:name=".T18FocusActivity" />
+        <activity android:name=".T19CoordinatorActivity" />
+        <activity android:name=".T20ComposeEffectSideActivity" />
+        <activity android:name=".T21DpiActivity" />
+        <activity android:name=".T22CryptoActivity" />
+
+        <service
+            android:name=".T23Ime"
+            android:exported="true"
+            android:label="imknown IME"
+            android:permission="android.permission.BIND_INPUT_METHOD">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data
+                android:name="android.view.im"
+                android:resource="@xml/method" />
+        </service>
+
+        <service
+            android:name=".firebase.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#069868</color>
+
+    <!-- region [M3] -->
+    <color name="seed">#176d33</color>
+
+    <color name="colorPrimary">#166D33</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorPrimaryContainer">#A1F6AC</color>
+    <color name="colorOnPrimaryContainer">#002109</color>
+    <color name="colorPrimaryInverse">#86D992</color>
+
+    <color name="colorSecondary">#516351</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorSecondaryContainer">#D4E8D1</color>
+    <color name="colorOnSecondaryContainer">#0F1F11</color>
+
+    <color name="colorTertiary">#39656D</color>
+    <color name="colorOnTertiary">#FFFFFF</color>
+    <color name="colorTertiaryContainer">#BDEAF3</color>
+    <color name="colorOnTertiaryContainer">#001F24</color>
+
+    <color name="colorError">#BA1A1A</color>
+    <color name="colorErrorContainer">#FFDAD6</color>
+    <color name="colorOnError">#FFFFFF</color>
+    <color name="colorOnErrorContainer">#410002</color>
+
+    <color name="colorBackground">#FCFDF7</color>
+    <color name="colorOnBackground">#1A1C19</color>
+
+    <color name="colorSurface">#FCFDF7</color>
+    <color name="colorOnSurface">#1A1C19</color>
+    <color name="colorSurfaceVariant">#DDE5DA</color>
+    <color name="colorOnSurfaceVariant">#414941</color>
+    <color name="colorSurfaceInverse">#2E312E</color>
+    <color name="colorOnSurfaceInverse">#F0F1EC</color>
+    <color name="colorOutline">#727970</color>
+    <color name="elevationOverlayColor">#166D33</color>
+
+    <color name="md_theme_shadow">#000000</color>
+    <!-- endregion [M3] -->
+
+    <color name="colorStatusBar">#3000</color>
+    <color name="colorNavigationBar">#3000</color>
+</resources>

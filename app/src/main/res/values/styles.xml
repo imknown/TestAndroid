@@ -1,0 +1,13 @@
+<resources>
+
+    <style name="MyPill">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="MyCut">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">cut</item>
+    </style>
+
+</resources>

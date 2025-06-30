@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".T17FontActivity"
+    tools:ignore="HardcodedText">
+
+    <EditText
+        android:id="@+id/tvBungeeSpice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#88FFAA"
+        android:hint="@null"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:text="-,-中gBungee文-,-"
+        android:textSize="40sp"
+        app:fontFamily="@font/bungee_spice_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/tvRoboto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#AAAAFF"
+        android:hint="@null"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:text="-,-中gRoboto文-,-"
+        android:textSize="40sp"
+        app:fontFamily="@font/roboto_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBungeeSpice" />
+
+    <EditText
+        android:id="@+id/tvNotoSansCjk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF88AA"
+        android:hint="@null"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:text="-,-中gDefault文-,-"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRoboto" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

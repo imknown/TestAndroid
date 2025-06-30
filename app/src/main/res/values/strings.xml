@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TestAndroid</string>
+
+    <string name="leak_canary_display_activity_label" translatable="false">TestAndroid Leaks</string>
+
+    <string name="BiometricPromptTitle">Title</string>
+    <string name="BiometricPromptSubtitle">Subtitle</string>
+    <string name="BiometricPromptNegativeButtonText">NegativeButtonText</string>
+    <string name="BiometricPromptDescription">Description</string>
+</resources>
