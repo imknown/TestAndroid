@@ -5,7 +5,7 @@ isPreview = "false" # true
 buildTools = "36.0.0"
 buildToolsPreview = "36.0.0"
 
-minSdk = "21"
+minSdk = "23"
 
 compileSdk = "36"
 compileSdkPreview = "C"
@@ -15,18 +15,18 @@ compileSdkExtension = "17" # 36-ext17 (Android 16 Beta 3)
 targetSdk = "36"
 targetSdkPreview = "C"
 
-agp = "8.11.0"
+agp = "8.11.1"
 
 androidxActivity = "1.11.0-rc01"
 androidxAppcompat = "1.7.1"
 androidxBiometric = "1.1.0"
-androidxComposeBom = "2025.06.01"
+androidxComposeBom = "2025.07.00"
 androidxConstraintlayout = "2.2.1"
 androidxCore = "1.16.0"
 androidxFragment = "1.8.8"
 androidxHilt = "1.2.0"
-androidxLifecycle = "2.9.1"
-androidxNavigation = "2.9.0"
+androidxLifecycle = "2.9.2"
+androidxNavigation = "2.9.2"
 androidxSecurityCrypto = "1.1.0-beta01"
 androidxSwipeRefreshLayout = "1.1.0"
 androidxWork = "2.10.2"
@@ -47,7 +47,7 @@ leakcanaryAndroid = "2.14"
 material = "1.12.0"
 
 googleServices-gradlePlugin = "4.4.3"
-firebaseBom = "33.16.0"
+firebaseBom = "34.0.0"
 
 restrictionbypass = "2.2"
 
