@@ -23,7 +23,7 @@ class T22CryptoActivity : AppCompatActivity() {
     companion object {
         private const val PROVIDER = "AndroidKeyStore"
         private const val TRANSFORMATION_AES = "AES/GCM/NoPadding"
-        private const val TRANSFORMATION_RSA = "RSA/ECB/PKCS1Padding"
+        private const val TRANSFORMATION_RSA = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -107,7 +107,8 @@ class T22CryptoActivity : AppCompatActivity() {
             val purposes = KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
             val keyGenParameterSpec = KeyGenParameterSpec.Builder(alias, purposes)
                 .setBlockModes(KeyProperties.BLOCK_MODE_ECB)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_OAEP)
+                .setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
                 .build()
             keyPairGenerator.initialize(keyGenParameterSpec)
             return keyPairGenerator.generateKeyPair()
