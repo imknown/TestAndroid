@@ -72,19 +72,17 @@ class T11NetworkProxyActivity : AppCompatActivity() {
         }.build()
         connectivityManager?.registerNetworkCallback(networkRequest, networkCallback)
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val activeNetwork = connectivityManager?.activeNetwork
-            val linkProperties = connectivityManager?.getLinkProperties(activeNetwork)
-            val httpProxy = linkProperties?.httpProxy
-            zLog("activeNetwork httpProxy host: ${httpProxy?.host}")
-            zLog("activeNetwork httpProxy port: ${httpProxy?.port?.toString()}")
-            zLog("activeNetwork httpProxy exclusion: ${httpProxy?.exclusionList?.toString()}")
+        val activeNetwork = connectivityManager?.activeNetwork
+        val linkProperties = connectivityManager?.getLinkProperties(activeNetwork)
+        val httpProxy = linkProperties?.httpProxy
+        zLog("activeNetwork httpProxy host: ${httpProxy?.host}")
+        zLog("activeNetwork httpProxy port: ${httpProxy?.port?.toString()}")
+        zLog("activeNetwork httpProxy exclusion: ${httpProxy?.exclusionList?.toString()}")
 
-            val defaultProxy = connectivityManager?.defaultProxy
-            zLog("defaultProxy host: ${defaultProxy?.host}")
-            zLog("defaultProxy port: ${defaultProxy?.port?.toString()}")
-            zLog("defaultProxy exclusion: ${defaultProxy?.exclusionList?.toString()}")
-        }
+        val defaultProxy = connectivityManager?.defaultProxy
+        zLog("defaultProxy host: ${defaultProxy?.host}")
+        zLog("defaultProxy port: ${defaultProxy?.port?.toString()}")
+        zLog("defaultProxy exclusion: ${defaultProxy?.exclusionList?.toString()}")
 
         // https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/doc-files/net-properties.html
         // https://docs.oracle.com/javase/8/docs/technotes/guides/net/proxies.html

@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowInsets
 import android.view.WindowInsetsAnimation
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
@@ -29,7 +28,6 @@ class T05WindowInsetsActivity : AppCompatActivity() {
         initInsets()
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun applyInsets(): WindowInsetsCompat {
         val type = WindowInsetsCompat.Type.navigationBars()
         val rootInsetsCompat = WindowInsetsCompat.toWindowInsetsCompat(
@@ -140,10 +138,6 @@ class T05WindowInsetsActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     @Suppress("UNUSED_PARAMETER")
     fun getImeState(view: View) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return
-        }
-
         val rootInsetsCompat = WindowInsetsCompat.toWindowInsetsCompat(
             binding.root.rootWindowInsets
         )

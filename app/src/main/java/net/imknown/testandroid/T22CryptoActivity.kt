@@ -1,10 +1,8 @@
 package net.imknown.testandroid
 
-import android.os.Build
 import android.os.Bundle
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
@@ -28,10 +26,6 @@ class T22CryptoActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            return
-        }
 
         lifecycleScope.launch(Dispatchers.IO) {
             val rawString = "1234567890".repeat(30)
@@ -57,7 +51,6 @@ class T22CryptoActivity : AppCompatActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     @Throws
     private fun getOrCreateAesSecretKey(alias: String): SecretKey {
         val keyStore = KeyStore.getInstance(PROVIDER)
@@ -96,7 +89,6 @@ class T22CryptoActivity : AppCompatActivity() {
     // endregion [AES]
 
     // region [RSA]
-    @RequiresApi(Build.VERSION_CODES.M)
     @Throws
     private fun getOrCreateRsaKeyPair(alias: String): KeyPair {
         val keyStore = KeyStore.getInstance(PROVIDER)

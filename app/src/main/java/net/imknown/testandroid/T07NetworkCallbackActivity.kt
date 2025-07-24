@@ -8,7 +8,6 @@ import android.net.NetworkCapabilities
 import android.net.NetworkRequest
 import android.os.Build
 import android.os.Bundle
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import net.imknown.testandroid.ext.zLog
 
@@ -54,13 +53,10 @@ class T07NetworkCallbackActivity : AppCompatActivity() {
 
         callBlock()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            zLog("isNetworkCapabilityValidated: " + isNetworkCapabilityValidated())
-        }
+        zLog("isNetworkCapabilityValidated: " + isNetworkCapabilityValidated())
         zLog("isConnected: " + isConnected())
     }
 
-    @RequiresApi(Build.VERSION_CODES.M)
     private fun isNetworkCapabilityValidated(): Boolean {
         val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as? ConnectivityManager
         val currentNetwork = connectivityManager?.activeNetwork
@@ -80,13 +76,7 @@ class T07NetworkCallbackActivity : AppCompatActivity() {
             connectivityManager.registerDefaultNetworkCallback(networkCallback)
         } else {
             val request = NetworkRequest.Builder()
-                .addCapability(
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        NetworkCapabilities.NET_CAPABILITY_VALIDATED
-                    } else {
-                        NetworkCapabilities.NET_CAPABILITY_INTERNET
-                    }
-                )
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_VALIDATED)
                 .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
                 .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
 //                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI_AWARE)
