@@ -98,11 +98,7 @@ dependencies {
     // Arch Components
     implementation(libs.androidx.biometric)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.androidx.security.crypto)
     implementation(libs.androidx.swiperefreshlayout)
-    implementation(libs.androidx.work.runtime.ktx)
-    implementation(libs.androidx.work.gcm)
 
     // Compose
     implementation(libs.androidx.compose.ui)
