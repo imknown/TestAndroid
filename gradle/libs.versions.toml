@@ -15,6 +15,9 @@ compileSdkExtension = "17" # 36-ext17 (Android 16 Beta 3)
 targetSdk = "36"
 targetSdkPreview = "CANARY"
 
+# https://github.com/android/ndk/releases
+ndk = "29.0.13599879" # Beta 2, but RC 2 in Android SDK Manager
+
 agp = "8.12.0-rc01"
 
 androidxActivity = "1.11.0-rc01"

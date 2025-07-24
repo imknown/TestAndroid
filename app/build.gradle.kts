@@ -32,6 +32,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    ndkVersion = libs.versions.ndk.get()
+
     signingConfigs {
         named("debug") {
             storeFile = file("$rootDir/debug.keystore")
