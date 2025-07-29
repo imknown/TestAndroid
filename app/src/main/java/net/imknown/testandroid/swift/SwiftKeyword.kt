@@ -37,4 +37,4 @@ inline fun guard(condition: () -> Boolean, guardElse: () -> Unit) {
         guardElse()
     }
 }
-// region [Kotlin style]
+// endregion [Kotlin style]
