@@ -1,42 +1,40 @@
 package net.imknown.testandroid.swift
 
+// region [Swift style]
 /** Keyword `guard`. */
-fun guard(condition: () -> Boolean): Boolean = condition()
+fun guard(condition: () -> Boolean) = condition()
 
 /**
- * Keyword `else` for keyword `guard`.
+ * Keyword guardElse for keyword `guard`.
  *
  * `guard condition else { /* to-do */ }` in Swift, means
  *
  * `if (condition.not()) { /* to-do */ }` in Kotlin.
  *
  * Sample:
- * ```
+ * ``` swift
  * // swift
  * let a: Int? = 0
  * guard let a, a > 0 else { return }
  * ```
  *
- * ```
+ * ``` kotlin
  * // kotlin
  * val a: Int? = 0
- * guard { a != null && a > 0 } `else` { return }
+ * guard { a != null && a > 0 } guardElse { return }
  * ```
  */
-inline infix fun Boolean.`else`(block: () -> Unit) {
+inline infix fun Boolean.guardElse(block: () -> Unit) {
     if (not()) {
         block()
     }
 }
+// endregion [Swift style]
 
-inline fun guard(condition: Boolean, `else`: () -> Unit) {
-    if (!condition) {
-        `else`()
-    }
-}
-
-inline fun guard(condition: () -> Boolean, `else`: () -> Unit) {
+// region [Kotlin style]
+inline fun guard(condition: () -> Boolean, guardElse: () -> Unit) {
     if (!condition()) {
-        `else`()
+        guardElse()
     }
 }
+// region [Kotlin style]
