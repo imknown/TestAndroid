@@ -16,9 +16,9 @@ targetSdk = "36"
 targetSdkPreview = "CANARY"
 
 # https://github.com/android/ndk/releases
-ndk = "29.0.13599879" # Beta 2, but RC 2 in Android SDK Manager
+ndk = "29.0.13846066" # Beta 3, but RC 3 in Android SDK Manager
 
-agp = "8.12.0-rc01"
+agp = "8.12.0"
 
 androidxActivity = "1.11.0-rc01"
 androidxAppcompat = "1.7.1"
@@ -30,17 +30,16 @@ androidxFragment = "1.8.8"
 androidxLifecycle = "2.9.2"
 androidxSwipeRefreshLayout = "1.1.0"
 
-androidxTest = "1.6.1"
-androidxTestExt = "1.2.1"
-androidxTestRunner = "1.6.2"
+androidxTest = "1.7.0"
+androidxTestExt = "1.3.0"
 junit = "4.13.2"
 
-kotlin = "2.2.0"
+kotlin = "2.2.10-RC"
 kotlinxCoroutinesAndroid = "1.10.2"
 
 leakcanaryAndroid = "2.14"
 
-material = "1.12.0"
+material = "1.13.0-rc01"
 
 googleServices-gradlePlugin = "4.4.3"
 firebaseBom = "34.0.0"
@@ -75,7 +74,6 @@ androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "s
 
 androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExt" }
-androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
