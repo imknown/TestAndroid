@@ -10,6 +10,7 @@ android {
     namespace = "net.imknown.testandroid"
 
     compileSdk = libs.versions.compileSdk.get().toInt()
+    compileSdkMinor = libs.versions.compileSdkMinor.get().toInt()
     // compileSdkExtension = libs.versions.compileSdkExtension.get().toInt()
     buildToolsVersion = libs.versions.buildTools.get()
     val isPreview = libs.versions.isPreview.get().toBoolean()
