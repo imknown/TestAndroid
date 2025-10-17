@@ -42,8 +42,8 @@ leakcanaryAndroid = "2.14"
 
 material = "1.13.0"
 
-googleServices-gradlePlugin = "4.4.3"
-firebaseBom = "34.3.0"
+googleServices-gradlePlugin = "4.4.4"
+firebaseBom = "34.4.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
