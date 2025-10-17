@@ -6,18 +6,23 @@ plugins {
     alias(libs.plugins.googleServices)
 }
 
+private val buildVersion = libs.versions
+
 android {
     namespace = "net.imknown.testandroid"
 
-    compileSdk = libs.versions.compileSdk.get().toInt()
-    compileSdkMinor = libs.versions.compileSdkMinor.get().toInt()
-    // compileSdkExtension = libs.versions.compileSdkExtension.get().toInt()
-    buildToolsVersion = libs.versions.buildTools.get()
-    val isPreview = libs.versions.isPreview.get().toBoolean()
-    if (isPreview) {
-        compileSdkPreview = libs.versions.compileSdkPreview.get()
-        buildToolsVersion = libs.versions.buildToolsPreview.get()
+    val isPreview = buildVersion.isPreview.get().toBoolean()
+    compileSdk {
+        version = if (isPreview) {
+            preview(buildVersion.compileSdkPreview.get())
+        } else {
+            release(buildVersion.compileSdk.get().toInt()) {
+                minorApiLevel = buildVersion.compileSdkMinor.get().toInt()
+                // sdkExtension = buildVersion.compileSdkExtension.get().toInt()
+            }
+        }
     }
+    buildToolsVersion = (if (isPreview) buildVersion.buildToolsPreview else buildVersion.buildTools).get()
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
