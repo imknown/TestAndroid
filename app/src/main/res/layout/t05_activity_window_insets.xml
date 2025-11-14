@@ -1,59 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/clRoot"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEFFFF"
-    tools:context=".T05WindowInsetsActivity"
-    tools:ignore="HardcodedText">
+    android:gravity="bottom"
+    android:orientation="vertical">
 
     <EditText
-        android:id="@+id/etInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@null"
-        android:importantForAutofill="no"
-        android:inputType="textMultiLine"
-        android:text="12"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnShowIme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:onClick="showIme"
-        android:text="Show\nIME"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@id/etInput"
-        app:layout_constraintStart_toEndOf="@id/etInput"
-        app:shapeAppearanceOverlay="@style/MyPill" />
-
-    <Button
-        android:id="@+id/btnHideIme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:onClick="hideIme"
-        android:text="Hide\nIME"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@id/btnShowIme"
-        app:layout_constraintStart_toEndOf="@id/btnShowIme"
-        app:shapeAppearanceOverlay="@style/MyCut" />
-
-    <Button
-        android:id="@+id/btnState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:onClick="getImeState"
-        android:text="State\nXXX"
-        android:textAlignment="textStart"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="@id/btnHideIme"
-        app:layout_constraintStart_toEndOf="@id/btnHideIme" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:background="#FA0"
+        android:text="0123456789" />
+</LinearLayout>

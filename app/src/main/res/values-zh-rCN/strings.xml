@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">测试 Android</string>
-
-    <string name="BiometricPromptTitle">标题</string>
-    <string name="BiometricPromptSubtitle">子标题</string>
-    <string name="BiometricPromptNegativeButtonText">消极按钮文本</string>
-    <string name="BiometricPromptDescription">描述</string>
-</resources>
