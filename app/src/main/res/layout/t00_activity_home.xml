@@ -170,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="gotoT22Crypto"
-            android:text="21 Crypto"
+            android:text="22 Crypto"
             android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>
