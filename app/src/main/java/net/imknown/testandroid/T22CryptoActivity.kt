@@ -28,14 +28,14 @@ class T22CryptoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val rawString = "1234567890".repeat(30)
+            val rawString = "1234567890".repeat(2)
             val rawBytes = rawString.toByteArray()
 
             try {
                 val secretKey = getOrCreateAesSecretKey("aliasAes")
                 val (encryptedBytes, iv) = encryptAes(rawBytes, secretKey)
                 val decryptedBytes = decryptAes(encryptedBytes, iv, secretKey)
-                println("zzz AES: ${rawString == String(decryptedBytes)}")
+                println("zzz AES: ${rawString == decryptedBytes.decodeToString()}")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -44,13 +44,14 @@ class T22CryptoActivity : AppCompatActivity() {
                 val keyPair = getOrCreateRsaKeyPair("aliasRsa")
                 val encryptedBytes = encryptRsa(rawBytes, keyPair.public)
                 val decryptedBytes = decryptRsa(encryptedBytes, keyPair.private)
-                println("zzz RSA: ${rawString == String(decryptedBytes)}")
+                println("zzz RSA: ${rawString == decryptedBytes.decodeToString()}")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
 
+    // region [AES]
     @Throws
     private fun getOrCreateAesSecretKey(alias: String): SecretKey {
         val keyStore = KeyStore.getInstance(PROVIDER)
