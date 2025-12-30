@@ -21,7 +21,7 @@ class T22CryptoActivity : AppCompatActivity() {
     companion object {
         private const val PROVIDER = "AndroidKeyStore"
         private const val TRANSFORMATION_AES = "AES/GCM/NoPadding"
-        private const val TRANSFORMATION_RSA = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
+        private const val TRANSFORMATION_RSA = "RSA/ECB/PKCS1Padding"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,23 +92,24 @@ class T22CryptoActivity : AppCompatActivity() {
     // region [RSA]
     @Throws
     private fun getOrCreateRsaKeyPair(alias: String): KeyPair {
-        val keyStore = KeyStore.getInstance(PROVIDER)
-        keyStore.load(null)
+        val keyStore = KeyStore.getInstance(PROVIDER).apply {
+            load(null)
+        }
 
-        if (!keyStore.containsAlias(alias)) {
-            val keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, PROVIDER)
-            val purposes = KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
-            val keyGenParameterSpec = KeyGenParameterSpec.Builder(alias, purposes)
-                .setBlockModes(KeyProperties.BLOCK_MODE_ECB)
-                .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_OAEP)
-                .setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
-                .build()
-            keyPairGenerator.initialize(keyGenParameterSpec)
-            return keyPairGenerator.generateKeyPair()
-        } else {
+        if (keyStore.containsAlias(alias)) {
             val privateKeyEntry = keyStore.getEntry(alias, null) as KeyStore.PrivateKeyEntry
             return KeyPair(privateKeyEntry.certificate.publicKey, privateKeyEntry.privateKey)
         }
+
+        val keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, PROVIDER)
+        val purposes = KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
+        val keyGenParameterSpec = KeyGenParameterSpec.Builder(alias, purposes)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+            .setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
+            .setKeySize(2048)
+            .build()
+        keyPairGenerator.initialize(keyGenParameterSpec)
+        return keyPairGenerator.generateKeyPair()
     }
 
     @Throws
