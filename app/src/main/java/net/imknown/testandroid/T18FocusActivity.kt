@@ -55,9 +55,8 @@ class T18FocusActivity : AppCompatActivity() {
         val fragment = MyDialogFragment()
         fragment.show(supportFragmentManager, "TAG")
     }
-}
 
-class MyDialogFragment : DialogFragment() {
+private class MyDialogFragment : DialogFragment() {
     @SuppressLint("SetTextI18n")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val view = EditText(context).apply { setText("Hello") }
@@ -67,4 +66,5 @@ class MyDialogFragment : DialogFragment() {
             .setNegativeButton("Cancel", null)
             .create()
     }
+}
 }

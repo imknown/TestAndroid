@@ -62,7 +62,6 @@ class T19CoordinatorActivity : AppCompatActivity() {
         override fun getItemCount() = dataSet.size
     }
     // endregion [Adapter]
-}
 
 /**
  * A AppBarLayout.ScrollingViewBehavior that adapts the scrolling view height based on its content.
@@ -244,4 +243,5 @@ class ConstrainedScrollBehavior(context: Context, attrs: AttributeSet?) :
     companion object {
         private val TAG: String = ConstrainedScrollBehavior::class.java.simpleName
     }
+}
 }

@@ -17,15 +17,15 @@ class T16KotlinKeywordContext : AppCompatActivity(0) {
             }
         }
     }
-}
 
-interface A {
+private interface A {
     var x: Int
 }
 
 // context(A)
-class AExt {
+private class AExt {
     // val x = 2
     val y = 3 * x
     val z = x + 1
+}
 }

@@ -49,7 +49,6 @@ class T20ComposeEffectSideActivity : ComponentActivity() {
             App()
         }
     }
-}
 
 @Preview
 @Composable
@@ -313,4 +312,5 @@ fun StrongSkippingMode() {
             Text(text = it.toString())
         }
     }
+}
 }

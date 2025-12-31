@@ -3,6 +3,7 @@ package net.imknown.testandroid
 import android.os.Bundle
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
+import android.util.Base64
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers
@@ -12,17 +13,29 @@ import java.security.KeyPairGenerator
 import java.security.KeyStore
 import java.security.PrivateKey
 import java.security.PublicKey
+import java.security.spec.MGF1ParameterSpec
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
+import javax.crypto.spec.OAEPParameterSpec
+import javax.crypto.spec.PSource
 
 class T22CryptoActivity : AppCompatActivity() {
     companion object {
         private const val PROVIDER = "AndroidKeyStore"
         private const val TRANSFORMATION_AES = "AES/GCM/NoPadding"
-        private const val TRANSFORMATION_RSA = "RSA/ECB/PKCS1Padding"
+        private const val TRANSFORMATION_RSA = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
     }
+
+    private val oaepParams = OAEPParameterSpec(
+        MGF1ParameterSpec.SHA256.digestAlgorithm,
+        "MGF1",
+        // https://issuetracker.google.com/issues/3670895
+        // https://issuetracker.google.com/issues/37075898
+        MGF1ParameterSpec.SHA1,
+        PSource.PSpecified.DEFAULT
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +58,11 @@ class T22CryptoActivity : AppCompatActivity() {
                 val encryptedBytes = encryptRsa(rawBytes, keyPair.public)
                 val decryptedBytes = decryptRsa(encryptedBytes, keyPair.private)
                 println("zzz RSA: ${rawString == decryptedBytes.decodeToString()}")
+
+                val base64EncryptedString = Base64.encodeToString(encryptedBytes, Base64.DEFAULT)
+                val encryptedBytesDecoded = Base64.decode(base64EncryptedString, Base64.DEFAULT)
+                val decryptedBytes2 = decryptRsa(encryptedBytesDecoded, keyPair.private)
+                println("zzz RSA Base64: ${rawString == decryptedBytes2.decodeToString()}")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -104,7 +122,8 @@ class T22CryptoActivity : AppCompatActivity() {
         val keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, PROVIDER)
         val purposes = KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
         val keyGenParameterSpec = KeyGenParameterSpec.Builder(alias, purposes)
-            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_PKCS1)
+            .setBlockModes(KeyProperties.BLOCK_MODE_ECB)
+            .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_OAEP)
             .setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
             .setKeySize(2048)
             .build()
@@ -115,7 +134,7 @@ class T22CryptoActivity : AppCompatActivity() {
     @Throws
     private fun encryptRsa(data: ByteArray, publicKey: PublicKey): ByteArray {
         val cipher = Cipher.getInstance(TRANSFORMATION_RSA)
-        cipher.init(Cipher.ENCRYPT_MODE, publicKey)
+        cipher.init(Cipher.ENCRYPT_MODE, publicKey, oaepParams)
         return cipher.doFinal(data)
     }
 
