@@ -25,9 +25,13 @@ import javax.crypto.spec.SecretKeySpec
 
 class T22CryptoActivity : AppCompatActivity() {
     companion object {
-        private const val PROVIDER = "AndroidKeyStore"
+        private const val PROVIDER_ANDROID_KEYSTORE = "AndroidKeyStore"
         private const val TRANSFORMATION_AES = "AES/GCM/NoPadding"
         private const val TRANSFORMATION_RSA = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding"
+    }
+
+    private val keyStoreOrThrow = KeyStore.getInstance(PROVIDER_ANDROID_KEYSTORE).apply {
+        load(null)
     }
 
     private val oaepParams = OAEPParameterSpec(
@@ -94,11 +98,8 @@ class T22CryptoActivity : AppCompatActivity() {
 
     // region [AES]
     private fun getOrCreateAesSecretKeyOrThrow(alias: String): SecretKey {
-        val keyStore = KeyStore.getInstance(PROVIDER)
-        keyStore.load(null)
-
-        if (!keyStore.containsAlias(alias)) {
-            val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, PROVIDER)
+        if (!keyStoreOrThrow.containsAlias(alias)) {
+            val keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES, PROVIDER_ANDROID_KEYSTORE)
             val purposes = KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
             val parameterSpec = KeyGenParameterSpec.Builder(alias, purposes)
                 .setBlockModes(KeyProperties.BLOCK_MODE_GCM)
@@ -107,7 +108,7 @@ class T22CryptoActivity : AppCompatActivity() {
             keyGenerator.init(parameterSpec)
             return keyGenerator.generateKey()
         } else {
-            return keyStore.getKey(alias, null) as SecretKey
+            return keyStoreOrThrow.getKey(alias, null) as SecretKey
         }
     }
 
@@ -133,17 +134,13 @@ class T22CryptoActivity : AppCompatActivity() {
 
     // region [RSA]
     private fun getOrCreateRsaKeyPairOrThrow(alias: String): KeyPair {
-        val keyStore = KeyStore.getInstance(PROVIDER).apply {
-            load(null)
-        }
-
-        if (keyStore.containsAlias(alias)) {
-            val privateKeyEntry = keyStore.getEntry(alias, null) as KeyStore.PrivateKeyEntry
+        if (keyStoreOrThrow.containsAlias(alias)) {
+            val privateKeyEntry = keyStoreOrThrow.getEntry(alias, null) as KeyStore.PrivateKeyEntry
             return KeyPair(privateKeyEntry.certificate.publicKey, privateKeyEntry.privateKey)
         }
 
         val keyPairGenerator = KeyPairGenerator.getInstance(
-            KeyProperties.KEY_ALGORITHM_RSA, PROVIDER
+            KeyProperties.KEY_ALGORITHM_RSA, PROVIDER_ANDROID_KEYSTORE
         )
         val purposes = KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_DECRYPT
         val keyGenParameterSpec = KeyGenParameterSpec.Builder(alias, purposes)
