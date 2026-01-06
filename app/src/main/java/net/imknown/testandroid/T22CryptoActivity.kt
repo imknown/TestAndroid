@@ -58,7 +58,12 @@ class T22CryptoActivity : AppCompatActivity() {
             }
 
             val aliasRsa = "aliasRsa"
-            val rawRsaString = "1234567890".repeat(19) // Max 190 for "RSA/ECB/OAEP..."
+            // 2048-bit RSA Key (SHA-256):
+            // - OAEP Padding:
+            // 256 bytes (key size) - 2 * (32 bytes for SHA-256) - 2 = 190 bytes.
+            // - PKCS#1 v1.5 padding:
+            // 256 bytes (key size) - 11 bytes = 245 bytes.
+            val rawRsaString = "1234567890".repeat(19)
             val rawRsaBytes = rawRsaString.toByteArray()
             zLog("RSA Raw: $rawRsaString")
 
