@@ -66,12 +66,12 @@ class T22CryptoActivity : AppCompatActivity() {
                 val rsaKeyPair = getOrCreateRsaKeyPairOrThrow(aliasRsa)
                 val encryptedBytes = encryptRsaOrThrow(rawRsaBytes, rsaKeyPair.public)
                 val decryptedBytes = decryptRsaOrThrow(encryptedBytes, rsaKeyPair.private)
-                zLog("RSA: ${decryptedBytes.decodeToString()}")
+                zLog("RSA-OAEP: ${decryptedBytes.decodeToString()}")
 
                 val base64EncryptedString = Base64.encodeToString(encryptedBytes, Base64.NO_WRAP)
                 val encryptedBytesDecoded = Base64.decode(base64EncryptedString, Base64.NO_WRAP)
                 val decryptedBytes2 = decryptRsaOrThrow(encryptedBytesDecoded, rsaKeyPair.private)
-                zLog("RSA + Base64: ${decryptedBytes2.decodeToString()}")
+                zLog("RSA-OAEP (Base64): ${decryptedBytes2.decodeToString()}")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -80,7 +80,7 @@ class T22CryptoActivity : AppCompatActivity() {
                 val rsaKeyPair = getOrCreateRsaKeyPairOrThrow(aliasRsa)
                 val payload = encryptRsaAesOrThrow(rsaKeyPair, rawAesBytes) // Save it to the local file, or send it over the network
                 val decryptedBytes = decryptRsaAesOrThrow(rsaKeyPair, payload)
-                zLog("RSA + AES + Base64: ${decryptedBytes.decodeToString()}")
+                zLog("RSA-KEM (Base64 AES): ${decryptedBytes.decodeToString()}")
             } catch (e: Exception) {
                 e.printStackTrace()
             }
