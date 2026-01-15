@@ -177,7 +177,7 @@ class T22CryptoActivity : AppCompatActivity() {
     }
 
     private fun decryptRsaOrThrow(privateKey: PrivateKey, data: ByteArray): ByteArray {
-        return cipherOrThrow(TRANSFORMATION_RSA, Cipher.DECRYPT_MODE, privateKey, null, data).data
+        return cipherOrThrow(TRANSFORMATION_RSA, Cipher.DECRYPT_MODE, privateKey, oaepParamsMdSha256Mgf1Sha1, data).data
     }
 
     private fun createRsaKeyPairInMemeryOrThrow(): KeyPair {
@@ -198,7 +198,7 @@ class T22CryptoActivity : AppCompatActivity() {
     }
 
     private fun decryptRsaMgf1Sha256OrThrow(privateKey: PrivateKey, data: ByteArray): ByteArray {
-        return cipherOrThrow(TRANSFORMATION_RSA, Cipher.DECRYPT_MODE, privateKey, null, data).data
+        return cipherOrThrow(TRANSFORMATION_RSA, Cipher.DECRYPT_MODE, privateKey, oaepParamsMdSha256Mgf1Sha256, data).data
     }
     // endregion [RSA]
 
