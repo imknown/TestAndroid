@@ -19,12 +19,12 @@ targetSdkPreview = "CANARY"
 # https://github.com/android/ndk/releases
 ndk = "29.0.14206865"
 
-agp = "8.13.2"
+agp = "9.0.0"
 
 androidxActivity = "1.12.2"
 androidxAppcompat = "1.7.1"
 androidxBiometric = "1.1.0"
-androidxComposeBom = "2025.12.01"
+androidxComposeBom = "2026.01.00"
 androidxConstraintlayout = "2.2.1"
 androidxCore = "1.17.0"
 androidxFragment = "1.8.9"
@@ -43,7 +43,7 @@ leakcanaryAndroid = "2.14"
 material = "1.13.0"
 
 googleServices-gradlePlugin = "4.4.4"
-firebaseBom = "34.7.0"
+firebaseBom = "34.8.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
@@ -90,7 +90,6 @@ firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 googleServices = { id = "com.google.gms.google-services", version.ref = "googleServices-gradlePlugin" }
