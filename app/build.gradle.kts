@@ -131,3 +131,24 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.firebase.analytics)
 }
+
+fun Task.disable() {
+    println("Task $name disabled.")
+    enabled = false
+}
+
+// gradle.taskGraph.whenReady {
+//    tasks.forEach { task ->
+tasks.configureEach {
+    val isGoogleServices = name.endsWith("GoogleServices")
+    if (isGoogleServices) {
+        disable()
+        return@configureEach
+    }
+
+    val isFirebaseCrashlytics = name.contains("Crashlytics")
+    if (isFirebaseCrashlytics) {
+        disable()
+        return@configureEach
+    }
+}
