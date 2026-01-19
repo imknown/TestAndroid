@@ -80,6 +80,8 @@ kotlin {
 }
 
 dependencies {
+    implementation(fileTree("libs") { include("*.jar", "*.aar") })
+
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.material)
@@ -126,6 +128,8 @@ dependencies {
     androidTestImplementation(libs.androidx.test.ext.junit)
 
     debugImplementation(libs.leakcanary.android)
+
+    implementation(libs.restrictionBypass)
 
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.messaging)

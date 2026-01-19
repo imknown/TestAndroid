@@ -45,6 +45,8 @@ material = "1.13.0"
 googleServices-gradlePlugin = "4.4.4"
 firebaseBom = "34.8.0"
 
+restrictionBypass = "c59bd6a680"
+
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "androidxActivity" }
@@ -87,6 +89,8 @@ material = { group = "com.google.android.material", name = "material", version.r
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
+
+restrictionBypass = { group = "com.github.ChickenHook", name = "RestrictionBypass", version.ref = "restrictionBypass" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
