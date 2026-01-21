@@ -188,4 +188,8 @@ class T00HomeActivity : T01LifecycleActivity() {
     fun gotoT24(view: View) {
         gotoActivity(T24CustomTabsActivity::class)
     }
+
+    fun gotoT25(view: View) {
+        gotoActivity(T25FidoActivity::class)
+    }
 }

@@ -84,6 +84,7 @@
                 android:resource="@xml/method" />
         </service>
         <activity android:name=".T24CustomTabsActivity" />
+        <activity android:name=".T25FidoActivity" />
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"
