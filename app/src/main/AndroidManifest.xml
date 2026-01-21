@@ -12,6 +12,20 @@
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="AllFilesAccessPolicy, ScopedStorage" />
 
+    <queries>
+        <!-- Check any browser -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="https" />
+        </intent>
+
+        <!-- Check any CT -->
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+
     <application
         android:name=".MyLifecycleApplication"
         android:enableOnBackInvokedCallback="true"
@@ -57,7 +71,6 @@
         <activity android:name=".T20ComposeEffectSideActivity" />
         <activity android:name=".T21DpiActivity" />
         <activity android:name=".T22CryptoActivity" />
-
         <service
             android:name=".T23Ime"
             android:exported="true"
@@ -70,6 +83,7 @@
                 android:name="android.view.im"
                 android:resource="@xml/method" />
         </service>
+        <activity android:name=".T24CustomTabsActivity" />
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"

@@ -184,4 +184,8 @@ class T00HomeActivity : T01LifecycleActivity() {
     fun gotoT22Crypto(view: View) {
         gotoActivity(T22CryptoActivity::class)
     }
+
+    fun gotoT24(view: View) {
+        gotoActivity(T24CustomTabsActivity::class)
+    }
 }
