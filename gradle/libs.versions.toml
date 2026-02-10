@@ -36,7 +36,7 @@ androidxTest = "1.7.0"
 androidxTestExt = "1.3.0"
 junit = "4.13.2"
 
-kotlin = "2.3.0"
+kotlin = "2.3.10"
 kotlinxCoroutinesAndroid = "1.10.2"
 
 leakcanaryAndroid = "2.14"
@@ -44,7 +44,7 @@ leakcanaryAndroid = "2.14"
 material = "1.13.0"
 
 googleServices-gradlePlugin = "4.4.4"
-firebaseBom = "34.8.0"
+firebaseBom = "34.9.0"
 
 restrictionBypass = "c59bd6a680"
 
@@ -79,6 +79,8 @@ androidx-swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "s
 androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTest" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExt" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesAndroid" }

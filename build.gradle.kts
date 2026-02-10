@@ -5,3 +5,10 @@ plugins {
 
     alias(libs.plugins.googleServices) apply false
 }
+
+// https://developer.android.com/build/releases/agp-9-0-0-release-notes#runtime-dependency-on-kotlin-gradle-plugin-upgrade
+buildscript {
+    dependencies {
+        classpath(libs.kotlin.gradle.plugin)
+    }
+}
