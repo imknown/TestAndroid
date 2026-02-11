@@ -23,6 +23,7 @@ import androidx.browser.customtabs.CustomTabsClient
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.browser.customtabs.CustomTabsService
 import androidx.browser.customtabs.CustomTabsServiceConnection
+import androidx.browser.customtabs.CustomTabsSession
 import androidx.core.net.toUri
 import net.imknown.testandroid.ext.zLog
 
@@ -60,6 +61,7 @@ class T24AuthTabServiceConnection(
 
     private var customTabsClient: CustomTabsClient? = null
     private var authTabSession: AuthTabSession? = null
+    private var customTabsSession: CustomTabsSession? = null
 
     override fun onCustomTabsServiceConnected(name: ComponentName, customTabsClient: CustomTabsClient) {
         zLog("$tag: onCustomTabsServiceConnected: $name")
@@ -103,9 +105,9 @@ class T24AuthTabServiceConnection(
             zLog("$tag: authTabSession is null")
         }
 
-        val customTabsSession = customTabsClient.newSession(null)
+        val customTabsSession = customTabsClient.newSession(T24CustomTabsCallback())
 
-        // this.customTabsSession = customTabsSession
+        this.customTabsSession = customTabsSession
 
         if (customTabsSession == null) {
             zLog("$tag: customTabsSession is null")
@@ -168,5 +170,6 @@ class T24AuthTabServiceConnection(
     fun destroy() {
         customTabsClient = null
         authTabSession = null
+        customTabsSession = null
     }
 }
