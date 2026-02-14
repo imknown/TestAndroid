@@ -19,13 +19,13 @@ targetSdkPreview = "CANARY"
 # https://github.com/android/ndk/releases
 ndk = "29.0.14206865"
 
-agp = "9.0.0"
+agp = "9.0.1"
 
-androidxActivity = "1.12.3"
+androidxActivity = "1.12.4"
 androidxAppcompat = "1.7.1"
 androidxBiometric = "1.1.0"
 androidxBrowser = "1.9.0"
-androidxComposeBom = "2026.01.01"
+androidxComposeBom = "2026.02.00"
 androidxConstraintlayout = "2.2.1"
 androidxCore = "1.17.0"
 androidxFragment = "1.8.9"
