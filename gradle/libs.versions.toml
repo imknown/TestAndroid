@@ -19,13 +19,13 @@ targetSdkPreview = "CANARY"
 # https://github.com/android/ndk/releases
 ndk = "29.0.14206865"
 
-agp = "9.0.1"
+agp = "9.1.0"
 
 androidxActivity = "1.12.4"
 androidxAppcompat = "1.7.1"
 androidxBiometric = "1.1.0"
 androidxBrowser = "1.9.0"
-androidxComposeBom = "2026.02.00"
+androidxComposeBom = "2026.02.01"
 androidxConstraintlayout = "2.2.1"
 androidxCore = "1.17.0"
 androidxFragment = "1.8.9"
@@ -44,7 +44,7 @@ leakcanaryAndroid = "2.14"
 material = "1.13.0"
 
 googleServices-gradlePlugin = "4.4.4"
-firebaseBom = "34.9.0"
+firebaseBom = "34.10.0"
 
 restrictionBypass = "c59bd6a680"
 
