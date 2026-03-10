@@ -83,7 +83,19 @@
                 android:name="android.view.im"
                 android:resource="@xml/method" />
         </service>
-        <activity android:name=".T24CustomTabsActivity" />
+        <activity
+            android:name=".T24CustomTabsActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="scheme" android:host="host" android:path="/path" />
+            </intent-filter>
+        </activity>
         <activity android:name=".T25FidoActivity" />
 
         <service

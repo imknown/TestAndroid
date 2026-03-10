@@ -38,7 +38,7 @@ class T24AuthTabServiceConnection(
             val callback = ActivityResultCallback<AuthResult> { result ->
                 val resultCode = result.resultCode
                 var message = when (resultCode) {
-                    AuthTabIntent.RESULT_OK -> "Received auth result."
+                    AuthTabIntent.RESULT_OK -> "Received AT result."
                     AuthTabIntent.RESULT_CANCELED -> "AT canceled."
                     AuthTabIntent.RESULT_VERIFICATION_FAILED -> "Verification failed."
                     AuthTabIntent.RESULT_VERIFICATION_TIMED_OUT -> "Verification timed out."
@@ -51,7 +51,7 @@ class T24AuthTabServiceConnection(
                     onOk(uri)
                 }
 
-                zLog("handleAuthResult: $message")
+                zLog("handle AuthTab Result: $message")
             }
             return AuthTabIntent.registerActivityResultLauncher(caller, callback)
         }
@@ -146,8 +146,8 @@ class T24AuthTabServiceConnection(
         intent.putExtra(Intent.EXTRA_REFERRER, "android-app://${context.packageName}".toUri())
 
         val launcher = launcher ?: return
-        authTabIntent.launch(launcher, url.toUri(), "auth", "/callback")
-//        authTabIntent.launch(launcher, url.toUri(), "sbikabu2")
+        authTabIntent.launch(launcher, url.toUri(), "host", "/path")
+        // authTabIntent.launch(launcher, url.toUri(), "scheme")
     }
 
     override fun onServiceDisconnected(name: ComponentName?) {

@@ -2,6 +2,7 @@ package net.imknown.testandroid
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.ActivityResultLauncher
@@ -41,6 +42,7 @@ class T24CustomTabsActivity : AppCompatActivity() {
         }
 
         launcher = T24AuthTabServiceConnection.initAuthTabLauncher(this) {
+            query(it)
         }
 
         binding.btnAt.setOnClickListener {
@@ -49,6 +51,20 @@ class T24CustomTabsActivity : AppCompatActivity() {
         binding.btnCt.setOnClickListener {
             bindCustomTabsService(packageNameCt)
         }
+    }
+
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        this.intent = intent
+
+        zLog("onNewIntent: $intent")
+
+        val uri = intent.data
+        query(uri)
+    }
+
+    private fun query(uri: Uri?) {
+        zLog("uri: $uri")
     }
 
     private fun printStatue() {
