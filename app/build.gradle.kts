@@ -24,11 +24,11 @@ android {
     buildToolsVersion = (if (isPreview) buildVersion.buildToolsPreview else buildVersion.buildTools).get()
 
     defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
+        minSdk = buildVersion.minSdk.get().toInt()
 
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        targetSdk = buildVersion.targetSdk.get().toInt()
         if (isPreview) {
-            targetSdkPreview = libs.versions.targetSdkPreview.get()
+            targetSdkPreview = buildVersion.targetSdkPreview.get()
         }
 
         versionCode = 1
@@ -37,7 +37,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    ndkVersion = libs.versions.ndk.get()
+    ndkVersion = buildVersion.ndk.get()
 
     signingConfigs {
         named("debug") {
