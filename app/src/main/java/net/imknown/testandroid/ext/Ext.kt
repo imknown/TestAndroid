@@ -9,5 +9,5 @@ fun Any.zLog(msg: Any?) {
         javaClass.superclass != null -> javaClass.superclass?.simpleName
         else -> "Anonymous"
     }
-    Log.e("zzz $tag", msg.toString())
+    Log.e("zzz", "[$tag] $msg")
 }
