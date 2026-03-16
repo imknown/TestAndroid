@@ -39,8 +39,12 @@ class T25FidoActivity : AppCompatActivity() {
             activity.startActivity(intentAutofill)
         }
 
-        val credentialServices = Settings.Secure.getString(activity.contentResolver, "credential_service")
-        val credentialServicePrimary = Settings.Secure.getString(activity.contentResolver, "credential_service_primary")
+        val credentialServices = Settings.Secure.getString(
+            activity.contentResolver, "credential_service"
+        )
+        val credentialServicePrimary = Settings.Secure.getString(
+            activity.contentResolver, "credential_service_primary"
+        )
         zLog("credential_service: $credentialServices")
         zLog("credential_service_primary: $credentialServicePrimary")
         if (credentialServicePrimary != null) {
@@ -59,7 +63,9 @@ class T25FidoActivity : AppCompatActivity() {
             return
         }
 
-        val autofillService = Settings.Secure.getString(activity.contentResolver, "autofill_service")
+        val autofillService = Settings.Secure.getString(
+            activity.contentResolver, "autofill_service"
+        )
         zLog("autofill_service: $autofillService")
         if (autofillService != null) {
             return
