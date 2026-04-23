@@ -2,30 +2,32 @@
 isPreview = "false" # true
 
 # https://developer.android.com/studio/releases/build-tools.html#notes
-buildTools = "36.1.0"
-buildToolsPreview = "37.0.0-rc2"
+buildTools = "37.0.0"
+buildToolsPreview = "37.0.0"
 
 minSdk = "23"
 
-compileSdk = "36"
-compileSdkMinor = "1"
-compileSdkPreview = "CANARY"
+compileSdk = "37"
+compileSdkMinor = "0"
+compileSdkPreview = "CinnamonBun"
+# compileSdkPreview = "CANARY"
 
 compileSdkExtension = "20"
 
-targetSdk = "36"
-targetSdkPreview = "CANARY"
+targetSdk = "37"
+targetSdkPreview = "CinnamonBun"
+# targetSdkPreview = "CANARY"
 
 # https://github.com/android/ndk/releases
-ndk = "29.0.14206865"
+ndk = "30.0.14904198"
 
-agp = "9.1.0"
+agp = "9.2.0"
 
 androidxActivity = "1.13.0"
 androidxAppcompat = "1.7.1"
 androidxBiometric = "1.1.0"
 androidxBrowser = "1.10.0"
-androidxComposeBom = "2026.03.01"
+androidxComposeBom = "2026.04.01"
 androidxConstraintlayout = "2.2.1"
 androidxCore = "1.18.0"
 androidxFragment = "1.8.9"
@@ -44,7 +46,7 @@ leakcanaryAndroid = "2.14"
 material = "1.13.0"
 
 googleServices-gradlePlugin = "4.4.4"
-firebaseBom = "34.11.0"
+firebaseBom = "34.12.0"
 
 restrictionBypass = "c59bd6a680"
 
