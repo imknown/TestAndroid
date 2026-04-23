@@ -152,7 +152,7 @@ fun JustProduceState() {
             job = MainScope().launch {
                 while (true) {
                     delay(1000)
-                    value += 1
+                    value++
                 }
             }
         }
