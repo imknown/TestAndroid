@@ -65,7 +65,7 @@ fun App() {
 @Suppress("unused")
 @Composable
 fun Placeholder() {
-    JustLaunchEffect()
+    JustLaunchedEffect()
     JustSideEffect()
     JustDisposableEffect()
     JustProduceState()
@@ -77,7 +77,7 @@ fun Placeholder() {
 }
 
 @Composable
-fun JustLaunchEffect() {
+fun JustLaunchedEffect() {
     var timer by remember { mutableIntStateOf(0) }
     Box(
         modifier = Modifier.fillMaxSize(),
