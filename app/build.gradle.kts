@@ -71,7 +71,7 @@ android {
 }
 
 kotlin {
-    jvmToolchain(25)
+    jvmToolchain(21)
 
     compilerOptions {
         freeCompilerArgs.add("-Xcontext-sensitive-resolution") // Preview in 2.2, Release in 2.3

@@ -27,6 +27,8 @@ import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.retain.RetainedEffect
+import androidx.compose.runtime.retain.retain
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
@@ -68,6 +70,7 @@ fun Placeholder() {
     JustLaunchedEffect()
     JustSideEffect()
     JustDisposableEffect()
+    JustRetainedEffect()
     JustProduceState()
     JustRememberCoroutineScope()
     JustDerivedStateOf()
@@ -133,6 +136,34 @@ fun JustDisposableEffect() {
         Toast.makeText(context, "Start $x", Toast.LENGTH_SHORT).show()
 
         onDispose {
+            Toast.makeText(context, "Stop $x", Toast.LENGTH_SHORT).show()
+        }
+    }
+}
+
+@Composable
+fun JustRetainedEffect() {
+    var timerStartStop by retain { mutableStateOf(false) }
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Button(onClick = {
+                timerStartStop = !timerStartStop
+            }) {
+                Text(if (timerStartStop) "Stop" else "Start")
+            }
+        }
+    }
+
+    val context = LocalContext.current
+
+    RetainedEffect(timerStartStop) {
+        val x = (1..10).random()
+        Toast.makeText(context, "Start $x", Toast.LENGTH_SHORT).show()
+
+        onRetire {
             Toast.makeText(context, "Stop $x", Toast.LENGTH_SHORT).show()
         }
     }
@@ -218,6 +249,7 @@ fun JustDerivedStateOf() {
         contentAlignment = Alignment.Center
     ) {
         val listState = rememberLazyListState()
+        var show by remember { mutableStateOf(true) }
 
         LazyColumn(state = listState) {
             items(1000) { index ->
@@ -225,16 +257,16 @@ fun JustDerivedStateOf() {
             }
         }
 
-        val showButtonDerive by remember {
+        val showButtonDerive by remember(show) {
             derivedStateOf {
-                listState.firstVisibleItemIndex > 0
+                listState.firstVisibleItemIndex > 0 && show
             }
         }
 
         Log.d("Track", "Recompose")
         Column {
             AnimatedVisibility(showButtonDerive) {
-                Button({}) {
+                Button({ show = !show }) {
                     Text("Row 1 hiding")
                 }
             }
