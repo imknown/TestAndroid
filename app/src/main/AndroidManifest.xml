@@ -97,6 +97,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".T25FidoActivity" />
+        <activity android:name=".T26CoroutineContinuationActivity" />
 
         <service
             android:name=".firebase.MyFirebaseMessagingService"

@@ -186,5 +186,12 @@
             android:onClick="gotoT25"
             android:text="25 FIDO"
             android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="gotoT26"
+            android:text="26 Coroutine Continuation"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

@@ -192,4 +192,8 @@ class T00HomeActivity : T01LifecycleActivity() {
     fun gotoT25(view: View) {
         gotoActivity(T25FidoActivity::class)
     }
+
+    fun gotoT26(view: View) {
+        gotoActivity(T26CoroutineContinuationActivity::class)
+    }
 }
