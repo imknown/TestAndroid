@@ -76,8 +76,7 @@ kotlin {
     jvmToolchain(21)
 
     compilerOptions {
-        freeCompilerArgs.add("-Xcontext-sensitive-resolution") // Preview in 2.2, Release in 2.3
-        freeCompilerArgs.add("-Xcontext-parameters") // Preview in 2.2, Release in 2.3
+        // freeCompilerArgs.add("-X...")
     }
 }
 

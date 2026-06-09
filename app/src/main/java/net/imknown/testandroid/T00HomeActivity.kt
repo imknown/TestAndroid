@@ -30,7 +30,7 @@ class T00HomeActivity : T01LifecycleActivity() {
 
         requestNotificationPermission()
 
-        gsm()
+        // gsm()
 
         val callback = onBackPressedDispatcher.addCallback(this) {
             finish()

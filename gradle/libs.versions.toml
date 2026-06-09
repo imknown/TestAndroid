@@ -29,7 +29,7 @@ androidxBiometric = "1.1.0"
 androidxBrowser = "1.10.0"
 androidxComposeBom = "2026.05.01"
 androidxConstraintlayout = "2.2.1"
-androidxCore = "1.18.0"
+androidxCore = "1.19.0"
 androidxFragment = "1.8.9"
 androidxLifecycle = "2.10.0"
 androidxSwipeRefreshLayout = "1.2.0"
@@ -38,7 +38,7 @@ androidxTest = "1.7.0"
 androidxTestExt = "1.3.0"
 junit = "4.13.2"
 
-kotlin = "2.3.21"
+kotlin = "2.4.0"
 kotlinxCoroutinesAndroid = "1.11.0"
 
 leakcanaryAndroid = "2.14"
@@ -46,11 +46,11 @@ leakcanaryAndroid = "2.14"
 material = "1.14.0"
 
 googleServices-gradlePlugin = "4.4.4"
-firebaseBom = "34.13.0"
+firebaseBom = "34.14.1"
 
 restrictionBypass = "c59bd6a680"
 
-stability-analyzer = "0.7.5"
+stability-analyzer = "0.9.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
