@@ -9,6 +9,7 @@ import android.util.DisplayMetrics
 import android.view.Display
 import androidx.appcompat.app.AppCompatActivity
 import net.imknown.testandroid.databinding.T21ActivityDpiBinding
+import kotlin.math.min
 
 class T21DpiActivity : AppCompatActivity() {
     private val binding by lazy { T21ActivityDpiBinding.inflate(layoutInflater) }
@@ -29,7 +30,7 @@ class T21DpiActivity : AppCompatActivity() {
     private fun getResult(): String {
         var result = "(P) Physical, (L) Logical, (W) Window size, (S) Screen size, (*) Click to change\n\n"
 
-         val display: Display? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+        val display: Display? = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             display
         } else {
             @Suppress("DEPRECATION")
@@ -99,7 +100,9 @@ class T21DpiActivity : AppCompatActivity() {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
                 val density = currentWindowMetrics.density
                 val dpi = density * DisplayMetrics.DENSITY_DEFAULT
-                result += "currentWindowMetrics\n(14+) density: $density, (L) DPI: $dpi\n\n"
+                val min = min(widthPixels, heightPixels)
+                val sw = min / (1F * dpi / DisplayMetrics.DENSITY_MEDIUM)
+                result += "currentWindowMetrics\n(14+) density: $density, (L) DPI: $dpi, (S) sw: $sw\n\n"
             }
         }
 
@@ -108,7 +111,9 @@ class T21DpiActivity : AppCompatActivity() {
         val resourcesDisplayMetricsDensityDpi = resources.displayMetrics.densityDpi
         val resourcesDisplayMetricsXdpi = resources.displayMetrics.xdpi
         val resourcesDisplayMetricsYdpi = resources.displayMetrics.ydpi
-        result += "resources.displayMetrics\n(L, W) Width: $resourcesDisplayMetricsWidthPixels, Height: $resourcesDisplayMetricsHeightPixels, (L) densityDpi: $resourcesDisplayMetricsDensityDpi, (P) xdpi: $resourcesDisplayMetricsXdpi, ydpi: $resourcesDisplayMetricsYdpi\n\n"
+        val minResourcesDisplayMetrics = min(resourcesDisplayMetricsWidthPixels, resourcesDisplayMetricsHeightPixels)
+        val swResourcesDisplayMetrics = minResourcesDisplayMetrics / (1F * resourcesDisplayMetricsDensityDpi / DisplayMetrics.DENSITY_MEDIUM)
+        result += "resources.displayMetrics\n(L, W) Width: $resourcesDisplayMetricsWidthPixels, Height: $resourcesDisplayMetricsHeightPixels, (L) densityDpi: $resourcesDisplayMetricsDensityDpi, (P) xdpi: $resourcesDisplayMetricsXdpi, ydpi: $resourcesDisplayMetricsYdpi, (S) sw: $swResourcesDisplayMetrics\n\n"
 
         val systemResources = Resources.getSystem()
         val systemResourcesWidthPixels = systemResources.displayMetrics.widthPixels
@@ -116,19 +121,23 @@ class T21DpiActivity : AppCompatActivity() {
         val systemResourcesDensityDpi = systemResources.displayMetrics.densityDpi
         val systemResourcesXdpi = systemResources.displayMetrics.xdpi
         val systemResourcesYdpi = systemResources.displayMetrics.ydpi
-        result += "Resources.getSystem().displayMetrics\n(L, W) Width: $systemResourcesWidthPixels, Height: $systemResourcesHeightPixels, (L) densityDpi: $systemResourcesDensityDpi, (P) xdpi: $systemResourcesXdpi, ydpi: $systemResourcesYdpi\n\n"
+        val minSystemResources = min(systemResourcesWidthPixels, systemResourcesHeightPixels)
+        val swSystemResources = minSystemResources / (1F * systemResourcesDensityDpi / DisplayMetrics.DENSITY_MEDIUM)
+        result += "Resources.getSystem().displayMetrics\n(L, W) Width: $systemResourcesWidthPixels, Height: $systemResourcesHeightPixels, (L) densityDpi: $systemResourcesDensityDpi, (P) xdpi: $systemResourcesXdpi, ydpi: $systemResourcesYdpi, (S) sw: $swSystemResources\n\n"
 
         val activityConfiguration = resources.configuration
         val activityConfigurationScreenWidthDp = activityConfiguration.screenWidthDp
         val activityConfigurationScreenHeightDp = activityConfiguration.screenHeightDp
         val activityConfigurationDensityDpi = activityConfiguration.densityDpi
-        result += "activityConfiguration.displayMetrics\n(L, W) screenWidthDp: $activityConfigurationScreenWidthDp, screenHeightDp: $activityConfigurationScreenHeightDp, (L) densityDpi: $activityConfigurationDensityDpi\n\n"
+        val swActivityConfiguration = activityConfiguration.smallestScreenWidthDp
+        result += "activityConfiguration.displayMetrics\n(L, W) screenWidthDp: $activityConfigurationScreenWidthDp, screenHeightDp: $activityConfigurationScreenHeightDp, (L) densityDpi: $activityConfigurationDensityDpi, (W) sw: $swActivityConfiguration\n\n"
 
         val systemConfiguration = systemResources.configuration
         val systemConfigurationScreenWidthDp = systemConfiguration.screenWidthDp
         val systemConfigurationScreenHeightDp = systemConfiguration.screenHeightDp
         val systemConfigurationDensityDpi = systemConfiguration.densityDpi
-        result += "systemConfiguration.displayMetrics\n(L, W) screenWidthDp: $systemConfigurationScreenWidthDp, screenHeightDp: $systemConfigurationScreenHeightDp, (L) densityDpi: $systemConfigurationDensityDpi\n\n"
+        val swSystemConfiguration = systemConfiguration.smallestScreenWidthDp
+        result += "systemConfiguration.displayMetrics\n(L, W) screenWidthDp: $systemConfigurationScreenWidthDp, screenHeightDp: $systemConfigurationScreenHeightDp, (L) densityDpi: $systemConfigurationDensityDpi, (W) sw: $swSystemConfiguration\n\n"
 
         return result
     }
